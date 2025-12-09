@@ -2,6 +2,7 @@
 # Dependencias
 # ===========================================
 node_modules/
+package-lock.json
 
 # ===========================================
 # Build / Compilación
