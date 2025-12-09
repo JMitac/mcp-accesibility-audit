@@ -93,6 +93,41 @@ mcp-accessibility-audit/
 └── package.json
 ```
 
+## 🌿 Ramas del Repositorio
+
+| Rama | Contenido |
+|------|-----------|
+| `master` | Código fuente del servidor MCP Accessibility Audit |
+| `test-accessibility-app` | Proyecto React de prueba con problemas de accesibilidad intencionales para validar el MCP |
+
+### Proyecto de Prueba
+
+La rama `test-accessibility-app` contiene una aplicación React + TypeScript con violaciones de accesibilidad intencionales:
+
+- 🖼️ Imágenes sin `alt` o con alt no descriptivo
+- 📝 Formularios sin labels asociados
+- 🔘 Botones sin texto accesible
+- 🔗 Enlaces con texto no descriptivo
+- 🏗️ Estructura HTML incorrecta (saltos de encabezados, múltiples h1)
+- 🎨 Problemas de contraste de color
+- 📊 Tablas sin encabezados
+
+Para usar el proyecto de prueba:
+
+```bash
+# Cambiar a la rama de prueba
+git checkout test-accessibility-app
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
+# Se abrirá en http://localhost:5180
+
+# Luego ejecutar audit_accessibility con url: http://localhost:5180
+```
+
 ## 📚 Documentación
 
 - [Guía de Uso](./docs/GUIA_USO.md) - Instrucciones detalladas paso a paso
