@@ -1,0 +1,38 @@
+{
+  "name": "mcp-accessibility-audit",
+  "version": "1.0.0",
+  "description": "Servidor MCP para auditorías de accesibilidad web siguiendo estándares WCAG. Genera reportes en español con soluciones recomendadas.",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "npx tsx src/index.ts",
+    "mcp:start": "npx tsx src/index.ts",
+    "mcp:inspector": "npx @modelcontextprotocol/inspector npx tsx src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "mcp",
+    "accessibility",
+    "wcag",
+    "a11y",
+    "audit",
+    "axe-core",
+    "puppeteer"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@axe-core/puppeteer": "^4.10.1",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "puppeteer": "^23.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,102 @@
+# 🔍 MCP Accessibility Audit
+
+Servidor MCP (Model Context Protocol) para ejecutar auditorías de accesibilidad web siguiendo los estándares WCAG. Genera reportes detallados en español con soluciones recomendadas.
+
+## ✨ Características
+
+- 🔎 **Auditoría automatizada** usando axe-core y Puppeteer
+- 🇪🇸 **Reportes en español** con traducciones de violaciones
+- 💡 **Soluciones recomendadas** con ejemplos de código
+- 📊 **Reportes en Markdown** fáciles de leer y versionar
+- 🎯 **Soporte WCAG 2.0 y 2.1** (niveles A, AA, AAA)
+
+## 📋 Requisitos
+
+- Node.js 18.0.0 o superior
+- npm 9.0.0 o superior
+
+## 🚀 Instalación
+
+```bash
+# Clonar o navegar al proyecto
+cd mcp-accessibility-audit
+
+# Instalar dependencias
+npm install
+```
+
+## 📖 Uso
+
+### Con MCP Inspector (Recomendado para pruebas)
+
+```bash
+npm run mcp:inspector
+```
+
+Esto abrirá una interfaz web donde puedes:
+1. Conectar al servidor
+2. Listar herramientas disponibles
+3. Ejecutar auditorías
+
+### Con Claude Desktop
+
+Agrega esta configuración a tu `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "accessibility-audit": {
+      "command": "npx",
+      "args": ["tsx", "src/index.ts"],
+      "cwd": "/ruta/a/mcp-accessibility-audit"
+    }
+  }
+}
+```
+
+## 🛠️ Herramientas Disponibles
+
+### `audit_accessibility`
+
+Ejecuta una auditoría de accesibilidad en una URL.
+
+| Parámetro | Tipo | Requerido | Descripción |
+|-----------|------|-----------|-------------|
+| `url` | string | ✅ | URL a auditar |
+| `outputDir` | string | ❌ | Directorio para reportes (default: ./reports) |
+| `wcagLevel` | string | ❌ | Nivel WCAG (default: wcag21aa) |
+
+### `list_reports`
+
+Lista todos los reportes generados.
+
+| Parámetro | Tipo | Requerido | Descripción |
+|-----------|------|-----------|-------------|
+| `outputDir` | string | ❌ | Directorio donde buscar (default: ./reports) |
+
+## 📁 Estructura del Proyecto
+
+```
+mcp-accessibility-audit/
+├── src/
+│   ├── index.ts           # Punto de entrada
+│   ├── server.ts          # Configuración del servidor MCP
+│   ├── tools/             # Definición de herramientas
+│   ├── services/          # Lógica de negocio
+│   ├── translations/      # Traducciones al español
+│   ├── types/             # Tipos TypeScript
+│   └── utils/             # Utilidades
+├── docs/
+│   ├── ARQUITECTURA.md    # Documentación de arquitectura
+│   └── GUIA_USO.md        # Guía de uso detallada
+├── reports/               # Reportes generados (gitignore)
+└── package.json
+```
+
+## 📚 Documentación
+
+- [Guía de Uso](./docs/GUIA_USO.md) - Instrucciones detalladas paso a paso
+
+## 📄 Licencia
+
+MIT
