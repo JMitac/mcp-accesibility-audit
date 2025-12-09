@@ -95,7 +95,7 @@ cd mcp-accessibility-audit
 Si tienes la carpeta localmente, navega a ella:
 
 ```bash
-cd d:\deploys\frontend-exchange-rimac\mcp-accessibility-audit
+cd /ruta/proyecto/mcp-accessibility-audit
 ```
 
 ### Paso 2: Instalar dependencias
@@ -224,7 +224,7 @@ Abre el archivo `claude_desktop_config.json` y agrega:
     "accessibility-audit": {
       "command": "npx",
       "args": ["tsx", "src/index.ts"],
-      "cwd": "D:/deploys/frontend-exchange-rimac/mcp-accessibility-audit"
+      "cwd": "/ruta/proyecto/mcp-accessibility-audit"
     }
   }
 }
