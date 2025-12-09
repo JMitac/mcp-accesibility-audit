@@ -1,38 +1,22 @@
 {
-  "name": "mcp-accessibility-audit",
+  "name": "test-accessibility-app",
+  "private": true,
   "version": "1.0.0",
-  "description": "Servidor MCP para auditorías de accesibilidad web siguiendo estándares WCAG. Genera reportes en español con soluciones recomendadas.",
   "type": "module",
-  "main": "src/index.ts",
   "scripts": {
-    "start": "npx tsx src/index.ts",
-    "mcp:start": "npx tsx src/index.ts",
-    "mcp:inspector": "npx @modelcontextprotocol/inspector npx tsx src/index.ts",
-    "build": "tsc",
-    "typecheck": "tsc --noEmit"
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
   },
-  "keywords": [
-    "mcp",
-    "accessibility",
-    "wcag",
-    "a11y",
-    "audit",
-    "axe-core",
-    "puppeteer"
-  ],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
-    "@axe-core/puppeteer": "^4.10.1",
-    "@modelcontextprotocol/sdk": "^1.0.0",
-    "puppeteer": "^23.11.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0"
   }
 }

@@ -1,102 +1,111 @@
-# 🔍 MCP Accessibility Audit
+# 🧪 Test Accessibility App
 
-Servidor MCP (Model Context Protocol) para ejecutar auditorías de accesibilidad web siguiendo los estándares WCAG. Genera reportes detallados en español con soluciones recomendadas.
+**⚠️ PROYECTO DE PRUEBA - NO USAR EN PRODUCCIÓN**
 
-## ✨ Características
+Este proyecto contiene problemas de accesibilidad intencionales para probar el MCP Accessibility Audit.
 
-- 🔎 **Auditoría automatizada** usando axe-core y Puppeteer
-- 🇪🇸 **Reportes en español** con traducciones de violaciones
-- 💡 **Soluciones recomendadas** con ejemplos de código
-- 📊 **Reportes en Markdown** fáciles de leer y versionar
-- 🎯 **Soporte WCAG 2.0 y 2.1** (niveles A, AA, AAA)
+## Problemas de Accesibilidad Incluidos
 
-## 📋 Requisitos
+### 🖼️ Imágenes
+- Imágenes sin atributo `alt`
+- Imágenes con `alt` vacío (no decorativas)
+- Imágenes con `alt` no descriptivo ("imagen", "foto")
+- Alt redundante con "imagen de..."
 
-- Node.js 18.0.0 o superior
-- npm 9.0.0 o superior
+### 📝 Formularios
+- Inputs sin `label` asociado
+- Labels sin `htmlFor`
+- Inputs sin `id` ni `name`
+- Select/Textarea sin label
+- Checkbox/Radio sin label
+- Radio buttons sin `fieldset/legend`
+- Campos requeridos sin indicación
+- Errores sin `aria-describedby`
 
-## 🚀 Instalación
+### 🔘 Botones
+- `div` usado como botón (sin `role`)
+- Botones solo con icono (sin `aria-label`)
+- Botones vacíos
+- Links usados como botones (`href="#"`)
+- `span` como botón
+- Botones con `tabindex="-1"`
 
+### 🔗 Enlaces
+- Links sin `href`
+- Links con `href` vacío
+- Links con `href="#"`
+- Texto no descriptivo ("clic aquí", "leer más")
+- Links que abren nueva ventana sin aviso
+- Imagen como link sin `alt`
+- Links vacíos
+
+### 🏗️ Estructura
+- Salto de niveles de encabezado (h2 → h4)
+- Múltiples `h1` en la página
+- Listas falsas (sin `ul/ol`)
+- Contenido sin landmarks (`nav`, `main`, `aside`)
+- Tablas usadas para layout
+- `iframe` sin título
+
+### 🎨 Contraste
+- Texto con bajo contraste
+- Texto pequeño con bajo contraste
+- Links sin diferenciación visual
+- Información transmitida solo por color
+- Placeholder con bajo contraste
+- Focus indicator con bajo contraste
+
+### 📊 Tablas
+- Tablas sin `th` (encabezados)
+- Tablas sin `caption`
+- `th` sin `scope`
+- Tablas complejas sin `headers/id`
+
+## 🚀 Cómo usar
+
+### 1. Instalar dependencias
 ```bash
-# Clonar o navegar al proyecto
-cd mcp-accessibility-audit
-
-# Instalar dependencias
+cd test-accessibility-app
 npm install
 ```
 
-## 📖 Uso
-
-### Con MCP Inspector (Recomendado para pruebas)
-
+### 2. Iniciar el servidor de desarrollo
 ```bash
-npm run mcp:inspector
+npm run dev
 ```
 
-Esto abrirá una interfaz web donde puedes:
-1. Conectar al servidor
-2. Listar herramientas disponibles
-3. Ejecutar auditorías
+El servidor se iniciará en `http://localhost:5180`
 
-### Con Claude Desktop
+### 3. Probar con MCP Accessibility Audit
 
-Agrega esta configuración a tu `claude_desktop_config.json`:
+En el MCP Inspector de `mcp-accessibility-audit`:
 
-```json
-{
-  "mcpServers": {
-    "accessibility-audit": {
-      "command": "npx",
-      "args": ["tsx", "src/index.ts"],
-      "cwd": "/ruta/a/mcp-accessibility-audit"
-    }
-  }
-}
-```
+1. Selecciona la herramienta `audit_accessibility`
+2. En **url** escribe: `http://localhost:5180`
+3. Haz clic en **Run Tool**
+4. Revisa el reporte generado con todas las violaciones
 
-## 🛠️ Herramientas Disponibles
-
-### `audit_accessibility`
-
-Ejecuta una auditoría de accesibilidad en una URL.
-
-| Parámetro | Tipo | Requerido | Descripción |
-|-----------|------|-----------|-------------|
-| `url` | string | ✅ | URL a auditar |
-| `outputDir` | string | ❌ | Directorio para reportes (default: ./reports) |
-| `wcagLevel` | string | ❌ | Nivel WCAG (default: wcag21aa) |
-
-### `list_reports`
-
-Lista todos los reportes generados.
-
-| Parámetro | Tipo | Requerido | Descripción |
-|-----------|------|-----------|-------------|
-| `outputDir` | string | ❌ | Directorio donde buscar (default: ./reports) |
-
-## 📁 Estructura del Proyecto
+## 📁 Estructura
 
 ```
-mcp-accessibility-audit/
+test-accessibility-app/
 ├── src/
-│   ├── index.ts           # Punto de entrada
-│   ├── server.ts          # Configuración del servidor MCP
-│   ├── tools/             # Definición de herramientas
-│   ├── services/          # Lógica de negocio
-│   ├── translations/      # Traducciones al español
-│   ├── types/             # Tipos TypeScript
-│   └── utils/             # Utilidades
-├── docs/
-│   ├── ARQUITECTURA.md    # Documentación de arquitectura
-│   └── GUIA_USO.md        # Guía de uso detallada
-├── reports/               # Reportes generados (gitignore)
-└── package.json
+│   ├── App.tsx
+│   ├── main.tsx
+│   ├── index.css
+│   └── components/
+│       ├── BadImages.tsx      # Problemas con imágenes
+│       ├── BadForms.tsx       # Problemas con formularios
+│       ├── BadButtons.tsx     # Problemas con botones
+│       ├── BadLinks.tsx       # Problemas con enlaces
+│       ├── BadStructure.tsx   # Problemas de estructura
+│       ├── BadContrast.tsx    # Problemas de contraste
+│       └── BadTables.tsx      # Problemas con tablas
+├── index.html                 # Sin lang, viewport restrictivo
+├── package.json
+└── README.md
 ```
-
-## 📚 Documentación
-
-- [Guía de Uso](./docs/GUIA_USO.md) - Instrucciones detalladas paso a paso
 
 ## 📄 Licencia
 
-MIT
+MIT - Solo para propósitos de prueba

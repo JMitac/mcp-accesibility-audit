@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ❌ PROBLEMA A11Y: Bajo contraste de colores */
+.low-contrast {
+  color: #999999;
+  background-color: #cccccc;
+}
+
+/* ❌ PROBLEMA A11Y: Texto muy pequeño */
+.small-text {
+  font-size: 9px;
+}
+
+/* ❌ PROBLEMA A11Y: Sin indicador de focus visible */
+.no-focus-indicator:focus {
+  outline: none;
+}
+
+/* Estilos generales */
+section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #444;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee;
+}
+
+.problem-badge {
+  display: inline-block;
+  background: #ff4444;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-left: 10px;
+}
